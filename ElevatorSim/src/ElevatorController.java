@@ -72,13 +72,13 @@ public class ElevatorController {
 	
 	public Elevator findNearestElevator(int start){
 		Elevator chosenOne = new Elevator();
-		int maxVal =0;
+		int minVal =floors;
 		int currDist;
 		for(Elevator e : elevators){
 			currDist = Math.abs(e.getCurrFloor() - start);
-			if( currDist > maxVal){
+			if( currDist < minVal){
 				chosenOne = e;
-				maxVal =currDist;
+				minVal =currDist;
 			}
 		}
 
