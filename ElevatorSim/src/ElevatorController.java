@@ -17,18 +17,27 @@ public class ElevatorController {
 		}
 	}
 	
-	public Elevator requestElevator(int floor){
+	public void requestElevator(int start,int dest){
+		//verify the request is valid
+		if(dest > floors || dest < 1){
+			System.out.println("Invalid destination. Min floor is 1, Max floor is " +floors);
+			return;
+		}
+		if( start > floors || start < 1){
+			System.out.println("Invalid start. Min floor is 1, Max floor is " +floors);
+			return;
+		}
 		//check if an elevator is on this floor
 		for(Elevator e : elevators){
-			if(e.getCurrFloor() == floor){
-				return e;
+			if(e.getCurrFloor() == start){
+				e.moveFloor(dest);
 			}
 		}
 		//if(elevator in transit will pass)
 		// return e;
 		
 		//findNearest()
-		return 
+
 	}
 
 	public int getFloors() {

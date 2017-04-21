@@ -37,22 +37,31 @@ public class Elevator {
 	}
 	
 	public void moveDown(int dest){
-		//move down
-		for(int i=currFloor;i<dest;i--){
-			
+		closeDoors();
+		while(currFloor != dest){
+			currFloor--;
+			System.out.println(name + " at floor: " + currFloor);
+			floorsPassed++;
 		}
+		numTrips++;
 		//no longer moving, set to paused
 		direction= PAUSED;
 	}
 	public void moveUp(int dest){
-		//move up
-		for(int i=currFloor;i<dest;i--){
-			
+		//notify that we closed the doors
+		closeDoors();
+		while(currFloor != dest){
+			currFloor++;
+			System.out.println(name + " at floor: " + currFloor);
+			floorsPassed++;
 		}
+		numTrips++;
 		direction= PAUSED;
 	}
 	
-	
+	private void closeDoors(){
+		System.out.println(name + " Closing Doors");
+	}
 	
 	public String getDirection() {
 		return direction;
