@@ -30,7 +30,7 @@ public class ElevatorController {
 		//check if an elevator is on this floor
 		for(Elevator e : elevators){
 			if(e.getCurrFloor() == start){
-				e.moveFloor(dest);
+				e.moveFloor(start,dest);
 			}
 		}
 		//if(elevator in transit will pass)

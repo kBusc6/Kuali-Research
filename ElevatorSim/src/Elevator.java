@@ -19,48 +19,57 @@ public class Elevator {
 				
 	}
 	
-	public void moveFloor(int destination){
-		
-		if(currFloor > destination){
+	
+	/**
+	 * @param start the floor to get passengers from
+	 * @param dest destination
+	 * 
+	 */
+	public void moveFloor(int start,int dest){
+				
+		moveFloor(start);
+		moveFloor(dest);				
+		numTrips++;
+		direction= PAUSED;
+	}
+	
+	private void moveFloor(int floor){
+		if(currFloor > floor){
 			direction = DOWN;
-			moveDown(destination);
+			moveDown(floor);
 		}
-		if(currFloor < destination){
+		else if(currFloor < floor){
 			direction = UP;
-			moveUp(destination);
+			moveUp(floor);
 		}
-		if(currFloor == destination){
-			//somone on this floor wants to 
-			//take elevator to the same floor
-			System.out.println(name + ": Opening Doors.");
-		}		
 	}
 	
 	public void moveDown(int dest){
+		openDoors();
 		closeDoors();
 		while(currFloor != dest){
 			currFloor--;
 			System.out.println(name + " at floor: " + currFloor);
 			floorsPassed++;
 		}
-		numTrips++;
-		//no longer moving, set to paused
-		direction= PAUSED;
+
 	}
 	public void moveUp(int dest){
-		//notify that we closed the doors
+		//notify that we open the doors
+		openDoors();
 		closeDoors();
 		while(currFloor != dest){
 			currFloor++;
 			System.out.println(name + " at floor: " + currFloor);
 			floorsPassed++;
-		}
-		numTrips++;
-		direction= PAUSED;
+		}		
 	}
 	
 	private void closeDoors(){
 		System.out.println(name + " Closing Doors");
+	}
+	private void openDoors(){
+		System.out.println(name + " Opening Doors");
 	}
 	
 	public String getDirection() {
