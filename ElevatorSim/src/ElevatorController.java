@@ -64,6 +64,7 @@ public class ElevatorController {
 				}
 			}
 		}
+		//no one at floor and no one will pass it, find the nearest
 		chosenOne = findNearestElevator(start);
 		checkForMaintenance(chosenOne);
 
