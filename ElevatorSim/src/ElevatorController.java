@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class ElevatorController {
 
 	private int floors;
-	private ArrayList<Elevator> elevators; 
+	private ArrayList<Elevator> elevators;
 	
 	public ElevatorController(int floors , int numElevators){
 		this.floors = floors;
@@ -11,9 +11,24 @@ public class ElevatorController {
 	}
 	
 	private void createElevators(int numElev){
+		elevators = new ArrayList<Elevator>();
 		for(int i=0; i<numElev; i++){
-			
+			elevators.add(new Elevator());
 		}
+	}
+	
+	public Elevator requestElevator(int floor){
+		//check if an elevator is on this floor
+		for(Elevator e : elevators){
+			if(e.getCurrFloor() == floor){
+				return e;
+			}
+		}
+		//if(elevator in transit will pass)
+		// return e;
+		
+		//findNearest()
+		return 
 	}
 
 	public int getFloors() {
