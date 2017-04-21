@@ -5,6 +5,7 @@ public class ElevatorController {
 	private int floors;
 	private ArrayList<Elevator> elevators;
 	
+	
 	public ElevatorController(int floors , int numElevators){
 		this.floors = floors;
 		
@@ -19,6 +20,7 @@ public class ElevatorController {
 	
 	public void requestElevator(int start,int dest){
 		//verify the request is valid
+		Elevator chosenOne;
 		if(dest > floors || dest < 1){
 			System.out.println("Invalid destination. Min floor is 1, Max floor is " +floors);
 			return;
@@ -30,10 +32,15 @@ public class ElevatorController {
 		//check if an elevator is on this floor
 		for(Elevator e : elevators){
 			if(e.getCurrFloor() == start){
-				e.moveFloor(start,dest);
+				chosenOne=e;
+				chosenOne.moveFloor(start,dest);
 			}
 		}
-		//if(elevator in transit will pass)
+		for(Elevator e : elevators){
+			if(e.getDirection() != Direction.PAUSED){
+				//if()
+			}
+		}
 		// return e;
 		
 		//findNearest()

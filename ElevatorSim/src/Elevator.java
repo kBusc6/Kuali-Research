@@ -4,11 +4,8 @@ public class Elevator {
 	private int currFloor;
 	private int numTrips;
 	private int floorsPassed;
-	private String direction;
-	//change to enum time permitting
-	private static final String UP = "up";
-	private static final String DOWN = "down";
-	private static final String PAUSED = "paused";
+	private Direction direction;
+
 	private String name;
 	
 	public Elevator(int elNumber){
@@ -28,18 +25,19 @@ public class Elevator {
 	public void moveFloor(int start,int dest){
 				
 		moveFloor(start);
-		moveFloor(dest);				
+		moveFloor(dest);
+		openDoors();
 		numTrips++;
-		direction= PAUSED;
+		direction= Direction.PAUSED;
 	}
 	
 	private void moveFloor(int floor){
 		if(currFloor > floor){
-			direction = DOWN;
+			direction = Direction.DOWN;
 			moveDown(floor);
 		}
 		else if(currFloor < floor){
-			direction = UP;
+			direction = Direction.UP;
 			moveUp(floor);
 		}
 	}
@@ -47,7 +45,7 @@ public class Elevator {
 	public void moveDown(int dest){
 		openDoors();
 		closeDoors();
-		while(currFloor != dest){
+		while(currFloor != dest &&  direction != Direction.PAUSED){
 			currFloor--;
 			System.out.println(name + " at floor: " + currFloor);
 			floorsPassed++;
@@ -58,7 +56,7 @@ public class Elevator {
 		//notify that we open the doors
 		openDoors();
 		closeDoors();
-		while(currFloor != dest){
+		while(currFloor != dest && direction != Direction.PAUSED){
 			currFloor++;
 			System.out.println(name + " at floor: " + currFloor);
 			floorsPassed++;
@@ -72,7 +70,7 @@ public class Elevator {
 		System.out.println(name + " Opening Doors");
 	}
 	
-	public String getDirection() {
+	public Direction getDirection() {
 		return direction;
 	}
 
