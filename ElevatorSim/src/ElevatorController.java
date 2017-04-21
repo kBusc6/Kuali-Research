@@ -9,7 +9,7 @@ public class ElevatorController {
 	
 	public ElevatorController(int floors , int numElevators){
 		this.floors = floors;
-		
+		createElevators(numElevators);
 	}
 	
 	private void createElevators(int numElev){
