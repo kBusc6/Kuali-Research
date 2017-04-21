@@ -16,6 +16,10 @@ public class Elevator {
 				
 	}
 	
+	public Elevator(){
+		
+	}
+	
 	
 	/**
 	 * @param start the floor to get passengers from
@@ -69,7 +73,9 @@ public class Elevator {
 	private void openDoors(){
 		System.out.println(name + " Opening Doors");
 	}
-	
+	public void setDirection(Direction dir){
+		this.direction =dir;
+	}
 	public Direction getDirection() {
 		return direction;
 	}
