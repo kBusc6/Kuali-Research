@@ -13,7 +13,7 @@ public class ElevatorController {
 	private void createElevators(int numElev){
 		elevators = new ArrayList<Elevator>();
 		for(int i=0; i<numElev; i++){
-			elevators.add(new Elevator());
+			elevators.add(new Elevator(i));
 		}
 	}
 	
